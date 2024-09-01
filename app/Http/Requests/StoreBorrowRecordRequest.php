@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreBorrowRecordRequest extends FormRequest
 {
@@ -11,7 +13,7 @@ class StoreBorrowRecordRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +24,17 @@ class StoreBorrowRecordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'borrowed_at' => 'nullable',
+            'due_date' => 'nullable',
+            'returned_at' => 'nullable'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'status' => 'error',
+            'errors' => $validator->errors(),
+        ], 422));
     }
 }
