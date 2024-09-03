@@ -22,3 +22,4 @@ Route::middleware('auth:api')->group(function () {
     Route::post('books/{id}/borrow', [BorrowRecordController::class, 'borrowBook']);
     Route::post('borrowRecords/{id}/return', [BorrowRecordController::class, 'returnBook']);
 });
+// **************   Rating Routes ********************************

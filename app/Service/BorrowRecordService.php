@@ -7,9 +7,11 @@ use App\Exceptions\BookAlreadyReturnedException;
 use App\Http\Requests\StoreBorrowRecordRequest;
 use App\Models\Book;
 use App\Models\BorrowRecord;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class BorrowRecordService
 {
@@ -43,6 +45,9 @@ class BorrowRecordService
         $borrowRecord = BorrowRecord::find($borrowRecordId);
         if (!$borrowRecord) {
             throw new ModelNotFoundException('The borrow record with the given ID was not found.');
+        }
+        if (!Gate::allows('return-book', $borrowRecord)) {
+            throw new AuthorizationException('You are not authorized to return this book');
         }
         if ($borrowRecord->due_date) {
             throw new BookAlreadyReturnedException('This book is already returned.');

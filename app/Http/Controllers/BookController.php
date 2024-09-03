@@ -7,6 +7,7 @@ use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use App\Service\BookService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -17,9 +18,10 @@ class BookController extends Controller
         $this->bookService = $bookService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-
+        $books = $this->bookService->index($request);
+        return $this->sendResponse($books, 'successfully');
     }
 
     /**

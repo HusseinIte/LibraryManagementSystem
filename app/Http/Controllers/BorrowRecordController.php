@@ -8,6 +8,7 @@ use App\Models\BorrowRecord;
 use App\Http\Requests\StoreBorrowRecordRequest;
 use App\Http\Requests\UpdateBorrowRecordRequest;
 use App\Service\BorrowRecordService;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BorrowRecordController extends Controller
@@ -36,10 +37,12 @@ class BorrowRecordController extends Controller
         try {
             $record = $this->borrowRecordService->returnBook($request->all(), $borrowRecordId);
             return $this->sendResponse($record, 'Book returned successfully!');
-        } catch (BookAlreadyReturnedException $e) {
-            return $this->sendError('Book return failed', ['error' => $e->getMessage()], 400);
         } catch (ModelNotFoundException $e) {
             return $this->sendError('Borrow record not found', ['error' => $e->getMessage()], 404);
+        } catch (AuthorizationException $e) {
+            return $this->sendError('Unauthorized action', ['error' => $e->getMessage()], 403);
+        } catch (BookAlreadyReturnedException $e) {
+            return $this->sendError('Book return failed', ['error' => $e->getMessage()], 400);
         }
     }
 

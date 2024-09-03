@@ -9,10 +9,21 @@ class BookService
 {
     /**
      * Display a listing of the resource.
+     * @param $request
+     * @return
      */
-    public function index()
+    public function index($request)
     {
-
+        $query = Book::query();
+//        Filter by borrowing availability
+          if($request->has('NotBorrowed')){
+            $query->notBorrowedBook();
+        }
+//        filter book by Author
+        if ($request->filled('author')) {
+            $query->BookByAuthor($request->input('author'));
+        }
+        return $query->get();
     }
 
     /**
