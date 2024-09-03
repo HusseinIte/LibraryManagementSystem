@@ -16,7 +16,7 @@ class BookService
     {
         $query = Book::query();
 //        Filter by borrowing availability
-          if($request->has('NotBorrowed')){
+        if ($request->has('NotBorrowed')) {
             $query->notBorrowedBook();
         }
 //        filter book by Author
@@ -35,7 +35,8 @@ class BookService
             'title' => $data['title'],
             'author' => $data['author'],
             'description' => $data['description'],
-            'published_at' => $data['published_at']
+            'published_at' => $data['published_at'],
+            'category_id' => $data['category_id']
         ]);
     }
 

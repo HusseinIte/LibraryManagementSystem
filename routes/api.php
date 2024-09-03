@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowRecordController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,11 @@ Route::apiResource('books', BookController::class);
 
 // ****************** Borrowed Routes **************************
 Route::middleware('auth:api')->group(function () {
-    Route::post('books/{id}/borrow', [BorrowRecordController::class, 'borrowBook']);
+    Route::post('books/{id}/borrow', [BorrowRecordController::class, 'borrowBook'])->middleware('Admin');
     Route::post('borrowRecords/{id}/return', [BorrowRecordController::class, 'returnBook']);
 });
 // **************   Rating Routes ********************************
+
+
+//*****************  category Routes ***************************
+Route::apiResource('categories', CategoryController::class)->middleware(['auth:api', 'Admin']);

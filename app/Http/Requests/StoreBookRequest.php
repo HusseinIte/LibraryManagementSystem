@@ -27,7 +27,8 @@ class StoreBookRequest extends FormRequest
             'title' => 'required',
             'author' => 'required|min:3|max:25',
             'description' => 'required',
-            'published_at' => 'required|date'
+            'published_at' => 'required|date',
+            'category_id' => 'required|int'
         ];
     }
 

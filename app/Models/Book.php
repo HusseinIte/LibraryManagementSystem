@@ -14,7 +14,9 @@ class Book extends Model
         'title',
         'author',
         'description',
-        'published_at'
+        'published_at',
+        'category_id'
+
     ];
 
     public function borrowRecords()
@@ -43,6 +45,11 @@ class Book extends Model
     public function averageRating()
     {
         return $this->ratings->avg('rating');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
 
