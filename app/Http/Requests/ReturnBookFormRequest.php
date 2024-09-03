@@ -2,12 +2,15 @@
 
 namespace App\Http\Requests;
 
+use App\Models\BorrowRecord;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class StoreBookRequest extends FormRequest
+class ReturnBookFormRequest extends FormRequest
 {
+    protected $borrowRecord;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -21,35 +24,27 @@ class StoreBookRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'title' => 'required',
-            'author' => 'required|min:3|max:25',
-            'description' => 'required',
-            'published_at' => 'required|date',
-            'category_id' => 'required|int'
+            'due_date' => 'nullable|date',
         ];
     }
 
-    public function attributes()
+    protected function prepareForValidation()
     {
-        return [
-            'title' => 'اسم الكتاب',
-            'author' => 'اسم المؤلف',
-            'description' => 'وصف الكتاب',
-            'published_at' => 'تاريخ النشر',
-            'category_id' => 'رقم الصنف'
-        ];
+        $this->borrowRecord = BorrowRecord::findOrFail($this->route('id'));
     }
 
-    public function messages()
-    {
-        return [
-            'required' => ' :attribute مطلوب'
-        ];
-    }
 
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            if ($this->due_date && $this->due_date < $this->borrowRecord->borrowed_at) {
+                $validator->errors()->add('due_date', 'due date cannot be before borrow date.');
+            }
+        });
+    }
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([

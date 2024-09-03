@@ -5,12 +5,16 @@ namespace App\Service;
 use App\Models\Book;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Class BookService
+ * @package App\Service
+ */
 class BookService
 {
+
     /**
-     * Display a listing of the resource.
      * @param $request
-     * @return
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index($request)
     {
@@ -30,8 +34,10 @@ class BookService
         return $query->with('category')->get();
     }
 
+
     /**
-     * Store a newly created resource in storage.
+     * @param array $data
+     * @return mixed
      */
     public function storeBook(array $data)
     {
@@ -44,8 +50,10 @@ class BookService
         ]);
     }
 
+
     /**
-     * Display the specified resource.
+     * @param $id
+     * @return mixed
      */
     public function showBookById($id)
     {
@@ -57,8 +65,11 @@ class BookService
 
     }
 
+
     /**
-     * Update the specified resource in storage.
+     * @param array $data
+     * @param $id
+     * @return mixed
      */
     public function updateBook(array $data, $id)
     {
@@ -71,8 +82,9 @@ class BookService
 
     }
 
+
     /**
-     * Remove the specified resource from storage.
+     * @param $id
      */
     public function deleteBook($id)
     {

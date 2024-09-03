@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\BookAlreadyBorrowedException;
 use App\Exceptions\BookAlreadyReturnedException;
+use App\Http\Requests\ReturnBookFormRequest;
 use App\Models\BorrowRecord;
 use App\Http\Requests\StoreBorrowRecordRequest;
 use App\Http\Requests\UpdateBorrowRecordRequest;
@@ -11,15 +12,31 @@ use App\Service\BorrowRecordService;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Class BorrowRecordController
+ * @package App\Http\Controllers
+ */
 class BorrowRecordController extends Controller
 {
+    /**
+     * @var BorrowRecordService
+     */
     protected $borrowRecordService;
 
+    /**
+     * BorrowRecordController constructor.
+     * @param BorrowRecordService $borrowRecordService
+     */
     public function __construct(BorrowRecordService $borrowRecordService)
     {
         $this->borrowRecordService = $borrowRecordService;
     }
 
+    /**
+     * @param StoreBorrowRecordRequest $request
+     * @param $bookId
+     * @return \Illuminate\Http\Response
+     */
     public function borrowBook(StoreBorrowRecordRequest $request, $bookId)
     {
         try {
@@ -32,7 +49,12 @@ class BorrowRecordController extends Controller
         }
     }
 
-    public function returnBook(UpdateBorrowRecordRequest $request, $borrowRecordId)
+    /**
+     * @param ReturnBookFormRequest $request
+     * @param $borrowRecordId
+     * @return \Illuminate\Http\Response
+     */
+    public function returnBook(ReturnBookFormRequest $request, $borrowRecordId)
     {
         try {
             $record = $this->borrowRecordService->returnBook($request->all(), $borrowRecordId);
@@ -47,42 +69,11 @@ class BorrowRecordController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showMyBorrowedBook()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreBorrowRecordRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(BorrowRecord $borrowRecord)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateBorrowRecordRequest $request, BorrowRecord $borrowRecord)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(BorrowRecord $borrowRecord)
-    {
-        //
+        $borrowedUser = $this->borrowRecordService->showMyBorrowedBook();
+        return $this->sendResponse($borrowedUser, 'your borrowed book has been retrieved successfully');
     }
 }

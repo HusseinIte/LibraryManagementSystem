@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class RegisterRequest extends FormRequest
 {
@@ -26,5 +28,26 @@ class RegisterRequest extends FormRequest
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ];
+    }
+    public function attributes()
+    {
+        return [
+            'name' => 'اسم المستحدم',
+            'email' => 'البريد الالكتروني',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ' :attribute مطلوب'
+        ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'status' => 'error',
+            'errors' => $validator->errors(),
+        ], 422));
     }
 }

@@ -13,11 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        return User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => 123456789,
-            'role' => 'Admin'
+        $this->call([
+            CategorySeeder::class,
+            UserSeeder::class,
+            BookSeeder::class
 
         ]);
 

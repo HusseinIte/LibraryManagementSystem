@@ -21,8 +21,9 @@ Route::apiResource('books', BookController::class);
 
 // ****************** Borrowed Routes **************************
 Route::middleware('auth:api')->group(function () {
-    Route::post('books/{id}/borrow', [BorrowRecordController::class, 'borrowBook'])->middleware('Admin');
+    Route::post('books/{id}/borrow', [BorrowRecordController::class, 'borrowBook']);
     Route::post('borrowRecords/{id}/return', [BorrowRecordController::class, 'returnBook']);
+    Route::get('borrowedRecords/myBorrowedBook', [BorrowRecordController::class, 'showMyBorrowedBook']);
 });
 // **************   Rating Routes ********************************
 
@@ -33,12 +34,8 @@ Route::apiResource('categories', CategoryController::class)->middleware(['auth:a
 
 // ******* Rating Route with Authentication  **********
 Route::middleware('auth:api')->group(function () {
+    Route::get('ratings/myRatings', [RatingController::class, 'showMyRating']);
     Route::post('ratings', [RatingController::class, 'store']);
     Route::put('ratings/{rating}', [RatingController::class, 'update']);
     Route::delete('ratings/{rating}', [RatingController::class, 'destroy']);
-//    show rating's movies  by auth user
-    Route::get('user/ratings', [RatingController::class, 'showRatingByUser']);
 });
-
-//        show rating's movie
-Route::get('movies/{id}/ratings', [RatingController::class, 'showRatingByMovie']);

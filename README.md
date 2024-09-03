@@ -11,6 +11,7 @@ The system ensures that only registered users can borrow books and rate the book
 - **Book Ratings**: Users can rate the books they've borrowed, with a check to ensure they only rate books they've borrowed.
 - **Custom Error Handling**: Clear and specific error messages are provided for validation failures.
 - **Postman Collection for API Testing**: Included for easy API testing and includes pre-configured variables for `authToken` and `baseUrl`.
+- **Database Seeding**: Pre-populate the database with sample data for books, users, and book categories.
 
 - [Installation](#installation)
  1. **Clone the repository:**
@@ -48,8 +49,14 @@ The system ensures that only registered users can borrow books and rate the book
      ```bash
      php artisan migrate --seed
      ```
+ 7. **Run the seeders (Optional):**
  
- 7. **Serve the application:**
+     If you want to populate the database with sample data, use the seeder command:
+ 
+     ```bash
+     php artisan db:seed
+     ```
+ 8. **Serve the application:**
  
      ```bash
      php artisan serve

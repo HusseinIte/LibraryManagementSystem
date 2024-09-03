@@ -1,0 +1,1902 @@
+{
+	"info": {
+		"_postman_id": "f682d87a-7b1f-4e95-83ab-a0e54fca3040",
+		"name": "LibraryManagementSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23551795"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {},
+						"protocolVersion": "http1",
+						"insecureHTTPParser": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"user4\",\r\n    \"email\": \"user4@example.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "email error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"user4\",\r\n    // \"email\": \"user4@example.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 17:55:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"email\": [\n            \" البريد الالكتروني مطلوب\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "name error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"name\": \"user4\",\r\n    \"email\": \"user4@example.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 17:56:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"name\": [\n            \" اسم المستحدم مطلوب\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "RegisterSuccess",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"user4\",\r\n    \"email\": \"user4@example.com\",\r\n    \"password\": \"password123\",\r\n    \"password_confirmation\": \"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 17:56:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"user\": {\n            \"name\": \"user4\",\n            \"email\": \"user4@example.com\",\n            \"updated_at\": \"2024-09-03T17:56:55.000000Z\",\n            \"created_at\": \"2024-09-03T17:56:55.000000Z\",\n            \"id\": 5\n        }\n    },\n    \"message\": \"User register successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"pm.collectionVariables.set('authToken', response.data.access_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "loginError",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"admin2@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 17:57:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorised.\",\n    \"data\": {\n        \"error\": \"Unauthorised\"\n    }\n}"
+						},
+						{
+							"name": "loginSuccess",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"user1@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 17:59:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzI1Mzg2MzU4LCJleHAiOjE3MjUzODk5NTgsIm5iZiI6MTcyNTM4NjM1OCwianRpIjoibVFST1A2STA1ck12R3NuQSIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.LhvbF3AvRF_D6a85oe11VRMhRgkPXHLb2sXjHhLa80Y\",\n        \"token_type\": \"bearer\",\n        \"expires_in\": 3600\n    },\n    \"message\": \"User login successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "profile",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 17:59:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"user1\",\n        \"email\": \"user1@gmail.com\",\n        \"email_verified_at\": null,\n        \"role\": \"User\",\n        \"created_at\": \"2024-09-03T17:46:20.000000Z\",\n        \"updated_at\": \"2024-09-03T17:46:20.000000Z\"\n    },\n    \"message\": \"Refresh token return successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/refresh",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"JavaScript: The Good Parts\",\r\n    \"author\": \"Douglas Crockford\",\r\n    \"description\": \"A deep dive into the core features of JavaScript, focusing on the language's strengths and best practices. This book highlights the 'good parts' of JavaScript that developers should use to write more efficient and reliable code.\",\r\n    \"published_at\": \"2008-05-15\",\r\n    \"category_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "authorerror",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"JavaScript: The Good Parts\",\r\n    // \"author\": \"Douglas Crockford\",\r\n    \"description\": \"A deep dive into the core features of JavaScript, focusing on the language's strengths and best practices. This book highlights the 'good parts' of JavaScript that developers should use to write more efficient and reliable code.\",\r\n    \"published_at\": \"2008-05-15\",\r\n    \"category_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:00:27 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"errors\": {\n        \"author\": [\n            \" اسم المؤلف مطلوب\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "storeSuccess",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"JavaScript: The Good Parts\",\r\n    \"author\": \"Douglas Crockford\",\r\n    \"description\": \"A deep dive into the core features of JavaScript, focusing on the language's strengths and best practices. This book highlights the 'good parts' of JavaScript that developers should use to write more efficient and reliable code.\",\r\n    \"published_at\": \"2008-05-15\",\r\n    \"category_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:01:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"title\": \"JavaScript: The Good Parts\",\n        \"author\": \"Douglas Crockford\",\n        \"description\": \"A deep dive into the core features of JavaScript, focusing on the language's strengths and best practices. This book highlights the 'good parts' of JavaScript that developers should use to write more efficient and reliable code.\",\n        \"published_at\": \"2008-05-15\",\n        \"category_id\": 1,\n        \"updated_at\": \"2024-09-03T18:01:43.000000Z\",\n        \"created_at\": \"2024-09-03T18:01:43.000000Z\",\n        \"id\": 7\n    },\n    \"message\": \"The book has been added successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "showById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"author\":\"gon\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/books/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/books",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "NotBorrowed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/books?NotBorrowed",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books"
+									],
+									"query": [
+										{
+											"key": "NotBorrowed",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:16:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Clean Code: A Handbook of Agile Software Craftsmanship\",\n            \"author\": \"Robert C. Martin\",\n            \"description\": \"A guide for software developers on how to write clean, readable, and maintainable code. The book provides best practices, principles, and case studies to help developers produce code that is both effective and easy to understand.\",\n            \"published_at\": \"2008-08-11\",\n            \"category_id\": 1,\n            \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"updated_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"programming\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Sapiens: A Brief History of Humankind\",\n            \"author\": \"Yuval Noah Harari\",\n            \"description\": \"A sweeping narrative that explores the history of humankind, from the emergence of Homo sapiens in the Stone Age to the present, analyzing how biology and history have defined us. The book covers the cognitive, agricultural, and scientific revolutions that shaped the modern world.\",\n            \"published_at\": \"2011-09-04\",\n            \"category_id\": 2,\n            \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"updated_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"category\": {\n                \"id\": 2,\n                \"name\": \"history\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Guns, Germs, and Steel: The Fates of Human Societies\",\n            \"author\": \"Jared Diamond\",\n            \"description\": \"A groundbreaking work that examines the factors that led to the differing development of human societies around the world. Diamond argues that geography, biology, and environmental factors played crucial roles in shaping the fates of civilizations.\",\n            \"published_at\": \"1997-03-01\",\n            \"category_id\": 2,\n            \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"updated_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"category\": {\n                \"id\": 2,\n                \"name\": \"history\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Prisoners of Geography: Ten Maps That Tell You Everything You Need to Know About Global Politics\",\n            \"author\": \"Tim Marshall\",\n            \"description\": \"A fascinating exploration of how geography shapes the political landscape of the world. The book uses ten maps to explain the geopolitical strategies of world powers and how natural barriers, resources, and climate influence global conflicts and international relations.\",\n            \"published_at\": \"2015-07-28\",\n            \"category_id\": 3,\n            \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"updated_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"category\": {\n                \"id\": 3,\n                \"name\": \"Geography\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        },\n        {\n            \"id\": 6,\n            \"title\": \"The Power of Geography: Ten Maps That Reveal the Future of Our World\",\n            \"author\": \"Tim Marshall\",\n            \"description\": \"A sequel to 'Prisoners of Geography,' this book continues to explore how geographical factors affect global politics. It examines the geopolitics of ten regions that will shape the future, from Australia and the Sahel to Space and Saudi Arabia.\",\n            \"published_at\": \"2021-04-22\",\n            \"category_id\": 3,\n            \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"updated_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"category\": {\n                \"id\": 3,\n                \"name\": \"Geography\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        },\n        {\n            \"id\": 7,\n            \"title\": \"JavaScript: The Good Parts\",\n            \"author\": \"Douglas Crockford\",\n            \"description\": \"A deep dive into the core features of JavaScript, focusing on the language's strengths and best practices. This book highlights the 'good parts' of JavaScript that developers should use to write more efficient and reliable code.\",\n            \"published_at\": \"2008-05-15\",\n            \"category_id\": 1,\n            \"created_at\": \"2024-09-03T18:01:43.000000Z\",\n            \"updated_at\": \"2024-09-03T18:01:43.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"programming\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        }\n    ],\n    \"message\": \"successfully\"\n}"
+						},
+						{
+							"name": "authorfilter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/books?NotBorrowed&&author=Robert C. Martin",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books"
+									],
+									"query": [
+										{
+											"key": "NotBorrowed",
+											"value": null
+										},
+										{
+											"key": null,
+											"value": null
+										},
+										{
+											"key": "author",
+											"value": "Robert C. Martin"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:17:36 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Clean Code: A Handbook of Agile Software Craftsmanship\",\n            \"author\": \"Robert C. Martin\",\n            \"description\": \"A guide for software developers on how to write clean, readable, and maintainable code. The book provides best practices, principles, and case studies to help developers produce code that is both effective and easy to understand.\",\n            \"published_at\": \"2008-08-11\",\n            \"category_id\": 1,\n            \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"updated_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"programming\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        }\n    ],\n    \"message\": \"successfully\"\n}"
+						},
+						{
+							"name": "categoryFilter",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/books?category=programming",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books"
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "programming"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:18:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Clean Code: A Handbook of Agile Software Craftsmanship\",\n            \"author\": \"Robert C. Martin\",\n            \"description\": \"A guide for software developers on how to write clean, readable, and maintainable code. The book provides best practices, principles, and case studies to help developers produce code that is both effective and easy to understand.\",\n            \"published_at\": \"2008-08-11\",\n            \"category_id\": 1,\n            \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"updated_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"programming\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"title\": \"The Pragmatic Programmer: Your Journey to Mastery\",\n            \"author\": \"Andrew Hunt and David Thomas\",\n            \"description\": \"A classic book on software development that covers a wide range of topics, including code organization, debugging, and problem-solving. It offers practical advice and tips for becoming a more effective and adaptable programmer.\",\n            \"published_at\": \"1999-10-30\",\n            \"category_id\": 1,\n            \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"updated_at\": \"2024-09-03T17:46:21.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"programming\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        },\n        {\n            \"id\": 7,\n            \"title\": \"JavaScript: The Good Parts\",\n            \"author\": \"Douglas Crockford\",\n            \"description\": \"A deep dive into the core features of JavaScript, focusing on the language's strengths and best practices. This book highlights the 'good parts' of JavaScript that developers should use to write more efficient and reliable code.\",\n            \"published_at\": \"2008-05-15\",\n            \"category_id\": 1,\n            \"created_at\": \"2024-09-03T18:01:43.000000Z\",\n            \"updated_at\": \"2024-09-03T18:01:43.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"name\": \"programming\",\n                \"created_at\": \"2024-09-03T17:46:19.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:19.000000Z\"\n            }\n        }\n    ],\n    \"message\": \"successfully\"\n}"
+						},
+						{
+							"name": "allBook",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/books",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:34:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"title\": \"Clean Code: A Handbook of Agile Software Craftsmanship\",\n            \"author\": \"Robert C. Martin\",\n            \"description\": \"A guide for software developers on how to write clean, readable, and maintainable code. The book provides best practices, principles, and case studies to help developers produce code that is both effective and easy to understand.\",\n            \"published_at\": \"2008-08-11\",\n            \"category_id\": 1,\n            \"avgRating\": null\n        },\n        {\n            \"title\": \"The Pragmatic Programmer: Your Journey to Mastery\",\n            \"author\": \"Andrew Hunt and David Thomas\",\n            \"description\": \"A classic book on software development that covers a wide range of topics, including code organization, debugging, and problem-solving. It offers practical advice and tips for becoming a more effective and adaptable programmer.\",\n            \"published_at\": \"1999-10-30\",\n            \"category_id\": 1,\n            \"avgRating\": null\n        },\n        {\n            \"title\": \"Sapiens: A Brief History of Humankind\",\n            \"author\": \"Yuval Noah Harari\",\n            \"description\": \"A sweeping narrative that explores the history of humankind, from the emergence of Homo sapiens in the Stone Age to the present, analyzing how biology and history have defined us. The book covers the cognitive, agricultural, and scientific revolutions that shaped the modern world.\",\n            \"published_at\": \"2011-09-04\",\n            \"category_id\": 2,\n            \"avgRating\": null\n        },\n        {\n            \"title\": \"Guns, Germs, and Steel: The Fates of Human Societies\",\n            \"author\": \"Jared Diamond\",\n            \"description\": \"A groundbreaking work that examines the factors that led to the differing development of human societies around the world. Diamond argues that geography, biology, and environmental factors played crucial roles in shaping the fates of civilizations.\",\n            \"published_at\": \"1997-03-01\",\n            \"category_id\": 2,\n            \"avgRating\": null\n        },\n        {\n            \"title\": \"Prisoners of Geography: Ten Maps That Tell You Everything You Need to Know About Global Politics\",\n            \"author\": \"Tim Marshall\",\n            \"description\": \"A fascinating exploration of how geography shapes the political landscape of the world. The book uses ten maps to explain the geopolitical strategies of world powers and how natural barriers, resources, and climate influence global conflicts and international relations.\",\n            \"published_at\": \"2015-07-28\",\n            \"category_id\": 3,\n            \"avgRating\": null\n        },\n        {\n            \"title\": \"The Power of Geography: Ten Maps That Reveal the Future of Our World\",\n            \"author\": \"Tim Marshall\",\n            \"description\": \"A sequel to 'Prisoners of Geography,' this book continues to explore how geographical factors affect global politics. It examines the geopolitics of ten regions that will shape the future, from Australia and the Sahel to Space and Saudi Arabia.\",\n            \"published_at\": \"2021-04-22\",\n            \"category_id\": 3,\n            \"avgRating\": 5\n        },\n        {\n            \"title\": \"JavaScript: The Good Parts\",\n            \"author\": \"Douglas Crockford\",\n            \"description\": \"A deep dive into the core features of JavaScript, focusing on the language's strengths and best practices. This book highlights the 'good parts' of JavaScript that developers should use to write more efficient and reliable code.\",\n            \"published_at\": \"2008-05-15\",\n            \"category_id\": 1,\n            \"avgRating\": null\n        }\n    ],\n    \"message\": \"successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "BorrowBooks",
+			"item": [
+				{
+					"name": "borrowBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"borrowed_at\":\"2024-03-09\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/books/2/borrow",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"books",
+								"2",
+								"borrow"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "borrowBookSuccess",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"borrowed_at\":\"2024-03-09\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/books/6/borrow",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books",
+										"6",
+										"borrow"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:03:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"user_id\": 2,\n        \"book_id\": \"6\",\n        \"borrowed_at\": \"2024-09-03T18:03:18.196827Z\",\n        \"returned_at\": \"2024-09-17T18:03:18.196827Z\",\n        \"updated_at\": \"2024-09-03T18:03:18.000000Z\",\n        \"created_at\": \"2024-09-03T18:03:18.000000Z\",\n        \"id\": 1\n    },\n    \"message\": \"Book borrowed successfully!\"\n}"
+						},
+						{
+							"name": "BookNotFound",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"borrowed_at\":\"2024-03-09\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/books/8/borrow",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"books",
+										"8",
+										"borrow"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:03:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"book not found\",\n    \"data\": {\n        \"error\": \"The book with the given ID was not found.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "returnBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/borrowRecords/1/return",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"borrowRecords",
+								"1",
+								"return"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "returnfromOther",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/borrowRecords/1/return",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"borrowRecords",
+										"1",
+										"return"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:06:43 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Unauthorized action\",\n    \"data\": {\n        \"error\": \"You are not authorized to return this book\"\n    }\n}"
+						},
+						{
+							"name": "returnBookmoreOnce",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/borrowRecords/1/return",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"borrowRecords",
+										"1",
+										"return"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:07:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"Book return failed\",\n    \"data\": {\n        \"error\": \"This book is already returned.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "showMyBorrowedBook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/borrowedRecords/myBorrowedBook",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"borrowedRecords",
+								"myBorrowedBook"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoty",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"programming\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"rating\":\"5\",\r\n        \"book_id\":6\r\n        // \"review\" :\"\"   \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ratings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ratingbookNotBorrow",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"rating\":\"5\",\r\n        \"book_id\":2\r\n        // \"review\" :\"\"   \r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ratings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ratings"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:09:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": false,\n    \"message\": \"rating failed\",\n    \"data\": {\n        \"errors\": \"You are not authorized to rating this book\"\n    }\n}"
+						},
+						{
+							"name": "ratingBorrowedBook",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"rating\":\"5\",\r\n        \"book_id\":6\r\n        // \"review\" :\"\"   \r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ratings",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ratings"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 03 Sep 2024 18:11:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"book_id\": 6,\n            \"user_id\": 2,\n            \"rating\": 5,\n            \"review\": null,\n            \"created_at\": \"2024-09-03T18:11:55.000000Z\",\n            \"updated_at\": \"2024-09-03T18:11:55.000000Z\",\n            \"book\": {\n                \"id\": 6,\n                \"title\": \"The Power of Geography: Ten Maps That Reveal the Future of Our World\",\n                \"author\": \"Tim Marshall\",\n                \"description\": \"A sequel to 'Prisoners of Geography,' this book continues to explore how geographical factors affect global politics. It examines the geopolitics of ten regions that will shape the future, from Australia and the Sahel to Space and Saudi Arabia.\",\n                \"published_at\": \"2021-04-22\",\n                \"category_id\": 3,\n                \"created_at\": \"2024-09-03T17:46:21.000000Z\",\n                \"updated_at\": \"2024-09-03T17:46:21.000000Z\"\n            }\n        }\n    ],\n    \"message\": \"The book has been rated successfully.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/ratings/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\":1,\r\n    \"review\":\"this is best film\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ratings/4",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/ratings/myRatings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ratings",
+								"myRatings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

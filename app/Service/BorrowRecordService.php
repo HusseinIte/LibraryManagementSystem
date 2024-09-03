@@ -13,10 +13,17 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
+/**
+ * Class BorrowRecordService
+ * @package App\Service
+ */
 class BorrowRecordService
 {
     //
-    public function index()
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function showMyBorrowedBook()
     {
         return BorrowRecord::with('book')
             ->where('user_id', Auth::id())
@@ -25,6 +32,12 @@ class BorrowRecordService
     }
 
 
+    /**
+     * @param array $data
+     * @param $bookId
+     * @return mixed
+     * @throws BookAlreadyBorrowedException
+     */
     public function borrowBook(array $data, $bookId)
     {
         if (!Book::find($bookId)) {
@@ -40,6 +53,13 @@ class BorrowRecordService
         ]);
     }
 
+    /**
+     * @param array $data
+     * @param $borrowRecordId
+     * @return mixed
+     * @throws AuthorizationException
+     * @throws BookAlreadyReturnedException
+     */
     public function returnBook(array $data, $borrowRecordId)
     {
         $borrowRecord = BorrowRecord::find($borrowRecordId);
@@ -57,6 +77,10 @@ class BorrowRecordService
         return $borrowRecord;
     }
 
+    /**
+     * @param $bookId
+     * @return mixed
+     */
     public function isBookBorrowed($bookId)
     {
         return BorrowRecord::where('book_id', $bookId)

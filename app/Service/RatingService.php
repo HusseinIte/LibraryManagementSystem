@@ -12,18 +12,21 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
+/**
+ * Class RatingService
+ * @package App\Service
+ */
 class RatingService
 {
-    /**
-     * Display a listing of the resource.
-     * @param StoreRatingRequest $request
-     */
 
+    /**
+     * @param StoreRatingRequest $request
+     * @return mixed
+     * @throws AuthorizationException
+     */
     public function store(StoreRatingRequest $request)
     {
-        $borrowRecord = BorrowRecord::where('book_id', $request->book_id)
-            ->where('user_id', Auth::id())->exists();
-        if (!$borrowRecord) {
+        if (!Gate::allows('rating-book', $request)) {
             throw new AuthorizationException('You are not authorized to rating this book');
         }
         $validated = $request->validated();
@@ -37,40 +40,42 @@ class RatingService
         return $rating->with('book')->get();
     }
 
-    /**
-     * Display the specified resource.
-     * @param Rating $rating
-     */
-
-    public function showByBook(Rating $rating)
-    {
-        //
-    }
-
-    public function showByUser(Rating $rating)
-    {
-        //
-    }
 
     /**
-     * Update the specified resource in storage.
      * @param UpdateRatingRequest $request
-     * @param $id
+     * @param $rating
+     * @return mixed
+     * @throws AuthorizationException
      */
-    public
-    function update(UpdateRatingRequest $request, $rating)
+    public function update(UpdateRatingRequest $request, $rating)
     {
+        if (!Gate::allows('updateRating-book', $rating)) {
+            throw new AuthorizationException('You are not authorized to update rating this book');
+        }
         $validated = $request->validated();
         $rating->update($validated);
         return $rating;
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param Rating $rating
+     * @return bool|null
+     * @throws AuthorizationException
      */
-    public
-    function destroy(Rating $rating)
+    public function destroy(Rating $rating)
     {
-        //
+        if (!Gate::allows('deleteRating-book', $rating)) {
+            throw new AuthorizationException('You are not authorized to delete rating this book');
+        }
+        return $rating->delete();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function showMyRating()
+    {
+        $user = Auth::user();
+        return $user->ratings;
     }
 }

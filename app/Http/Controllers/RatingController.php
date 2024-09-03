@@ -8,17 +8,29 @@ use App\Http\Requests\UpdateRatingRequest;
 use App\Service\RatingService;
 use Illuminate\Auth\Access\AuthorizationException;
 
+/**
+ * Class RatingController
+ * @package App\Http\Controllers
+ */
 class RatingController extends Controller
 {
+    /**
+     * @var RatingService
+     */
     protected $ratingService;
 
+    /**
+     * RatingController constructor.
+     * @param RatingService $ratingService
+     */
     public function __construct(RatingService $ratingService)
     {
         $this->ratingService = $ratingService;
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param StoreRatingRequest $request
+     * @return \Illuminate\Http\Response
      */
     public function store(StoreRatingRequest $request)
     {
@@ -31,27 +43,43 @@ class RatingController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Rating $rating)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * @param UpdateRatingRequest $request
+     * @param Rating $rating
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdateRatingRequest $request, Rating $rating)
     {
-        $rating = $this->ratingService->update($request, $rating);
-        return $this->sendResponse($rating, 'book has been rated successfully');
+        try {
+            $rating = $this->ratingService->update($request, $rating);
+            return $this->sendResponse($rating, 'rating has been updated successfully');
+        } catch (AuthorizationException $e) {
+            return $this->sendError('rating update failed', ['errors' => $e->getMessage()], 403);
+        }
+
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param Rating $rating
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Rating $rating)
     {
-        //
+        try {
+            $id = $rating->id;
+            $rating = $this->ratingService->destroy($rating);
+            return response()->json(['message' => 'rating with id ' . $id . ' deleted successfully.'], 200);
+        } catch (AuthorizationException $e) {
+            return $this->sendError('rating update failed', ['errors' => $e->getMessage()], 403);
+        }
+
+    }
+
+    /**
+     * @return \Illuminate\Http\Response
+     */
+    public function showMyRating()
+    {
+        $ratings = $this->ratingService->showMyRating();
+        return $this->sendResponse($ratings, 'your ratings has been retrieved successfully');
     }
 }

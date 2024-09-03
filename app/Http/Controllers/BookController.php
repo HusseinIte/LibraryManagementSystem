@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
@@ -21,7 +22,7 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $books = $this->bookService->index($request);
-        return $this->sendResponse($books, 'successfully');
+        return $this->sendResponse(BookResource::collection($books), 'successfully');
     }
 
     /**

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreRatingRequest extends FormRequest
 {
@@ -26,5 +28,28 @@ class StoreRatingRequest extends FormRequest
             'review' => 'nullable|string|min:10|max:1000',
             'book_id' => 'required|int'
         ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'rating' => 'قيمة التقييم',
+            'book_id' => 'رثم الكتاب'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ' :attribute مطلوب'
+        ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'status' => 'error',
+            'errors' => $validator->errors(),
+        ], 422));
     }
 }

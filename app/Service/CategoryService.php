@@ -5,11 +5,16 @@ namespace App\Service;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
+/**
+ * Class CategoryService
+ * @package App\Service
+ */
 class CategoryService
 {
 
+
     /**
-     * Display a listing of the resource.
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function index()
     {
@@ -29,16 +34,21 @@ class CategoryService
         ]);
     }
 
+
     /**
-     * Display the specified resource.
+     * @param $id
+     * @return mixed
      */
     public function show($id)
     {
         return Category::findOrFail($id);
     }
 
+
     /**
-     * Update the specified resource in storage.
+     * @param $request
+     * @param $category
+     * @return mixed
      */
     public function update($request, $category)
     {
@@ -46,7 +56,7 @@ class CategoryService
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param $category
      */
     public function destroy($category)
     {
