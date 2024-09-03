@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use PhpParser\Builder;
 
 class Book extends Model
 {
@@ -29,17 +29,24 @@ class Book extends Model
         return $this->hasMany(Rating::class);
     }
 
-    public function scopeNotBorrowedBook($query)
+    public function scopeNotBorrowedBook(Builder $query)
     {
 
-        return $query->whereDoesntHave('borrowRecords', function ($query) {
+        $query->whereDoesntHave('borrowRecords', function ($query) {
             $query->whereNull('due_date');
         });
     }
 
-    public function scopeBookByAuthor($query, $author)
+    public function scopeBookByCategory(Builder $query, $category)
     {
-        return $query->where('author', $author);
+        $query->whereHas('category', function ($query) use ($category) {
+            $query->where('name', $category);
+        });
+    }
+
+    public function scopeBookByAuthor(Builder $query, $author)
+    {
+        $query->where('author', $author);
     }
 
     public function averageRating()

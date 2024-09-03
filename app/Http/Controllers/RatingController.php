@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Rating;
 use App\Http\Requests\StoreRatingRequest;
 use App\Http\Requests\UpdateRatingRequest;
+use App\Service\RatingService;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class RatingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $ratingService;
+
+    public function __construct(RatingService $ratingService)
     {
-        //
+        $this->ratingService = $ratingService;
     }
 
     /**
@@ -21,7 +22,12 @@ class RatingController extends Controller
      */
     public function store(StoreRatingRequest $request)
     {
-        //
+        try {
+            $rating = $this->ratingService->store($request);
+            return $this->sendResponse($rating, 'The book has been rated successfully.');
+        } catch (AuthorizationException $e) {
+            return $this->sendError('rating failed', ['errors' => $e->getMessage()], 403);
+        }
     }
 
     /**
@@ -37,7 +43,8 @@ class RatingController extends Controller
      */
     public function update(UpdateRatingRequest $request, Rating $rating)
     {
-        //
+        $rating = $this->ratingService->update($request, $rating);
+        return $this->sendResponse($rating, 'book has been rated successfully');
     }
 
     /**

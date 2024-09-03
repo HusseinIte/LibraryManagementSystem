@@ -26,5 +26,9 @@ class AppServiceProvider extends ServiceProvider
             return $user->id === $borrowRecord->user_id;
         });
 
+        Gate::define('rating-book', function (User $user, BorrowRecord $borrowRecord) {
+            return $user->id === $borrowRecord->user_id;
+        });
+
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowRecordController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,16 @@ Route::middleware('auth:api')->group(function () {
 
 //*****************  category Routes ***************************
 Route::apiResource('categories', CategoryController::class)->middleware(['auth:api', 'Admin']);
+
+
+// ******* Rating Route with Authentication  **********
+Route::middleware('auth:api')->group(function () {
+    Route::post('ratings', [RatingController::class, 'store']);
+    Route::put('ratings/{rating}', [RatingController::class, 'update']);
+    Route::delete('ratings/{rating}', [RatingController::class, 'destroy']);
+//    show rating's movies  by auth user
+    Route::get('user/ratings', [RatingController::class, 'showRatingByUser']);
+});
+
+//        show rating's movie
+Route::get('movies/{id}/ratings', [RatingController::class, 'showRatingByMovie']);

@@ -23,7 +23,11 @@ class BookService
         if ($request->filled('author')) {
             $query->BookByAuthor($request->input('author'));
         }
-        return $query->get();
+//       Filter By category
+        if ($request->filled('category')) {
+            $query->bookByCategory($request->input('category'));
+        }
+        return $query->with('category')->get();
     }
 
     /**

@@ -24,6 +24,7 @@ class UpdateRatingRequest extends FormRequest
         return [
             'rating' => 'required|integer|min:1|max:5',
             'review' => 'nullable|string|min:10|max:1000',
+
         ];
     }
 }
